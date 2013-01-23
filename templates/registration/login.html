@@ -1,0 +1,24 @@
+{% extends "cms/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block breadcrumbs %}
+&nbsp;
+{% endblock %}
+{% block content %}
+<div class="row top bottom">
+<div class="twelvecol last">
+<h1>PNW Moths Login</h1>
+
+{% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+<form method="post" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" name="next" value="{{ next }}" />
+    <input type="submit" value="Login" />
+</form>
+</div>
+</div>
+{% endblock %}

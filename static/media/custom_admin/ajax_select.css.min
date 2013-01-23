@@ -1,0 +1,1 @@
+ul.ui-autocomplete{height:200px!important;overflow-y:scroll!important;max-width:500px!important;min-width:500px!important}

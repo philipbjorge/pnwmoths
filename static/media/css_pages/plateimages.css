@@ -1,0 +1,26 @@
+#plate_images {
+    list-style: none;
+    margin: 0 auto;
+    text-align: center;
+}
+#plate_images > li {
+    vertical-align: top;
+    display: inline-block;
+    padding: 1em;
+    text-align: center;
+
+*display: inline;
+zoom: 1;
+}
+
+#plate_images li:target {
+    background-color: #F3E8BA;
+}
+.customTarget {
+  background-color: #F3E8BA;
+}
+
+#plates-copyright {
+  text-align: center;
+  font-size: 0.8em;
+}

@@ -1,0 +1,1 @@
+#plate_images{list-style:none;margin:0 auto;text-align:center}#plate_images>li{vertical-align:top;display:inline-block;padding:1em;text-align:center;*display:inline;zoom:1}#plate_images li:target{background-color:#f3e8ba}.customTarget{background-color:#f3e8ba}#plates-copyright{text-align:center;font-size:.8em}
