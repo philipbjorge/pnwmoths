@@ -1,5 +1,5 @@
 {% extends "cms/base.html" %}
-{% load factsheet_filters cache cms_tags species_tags thumbnail %}
+{% load factsheet_filters cache cms_tags species_tags %}
 
 
 {% block scripts %}
@@ -67,19 +67,6 @@ if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('
 {% block stylesheets %}
 {{ block.super }}
 {% species_by_name current_page.get_title as species %}
-  <!--
-  <PageMap>
-     <DataObject type="thumbnail">
-	    {% with species.get_first_image as img %}
-		{% thumbnail img.image img.SIZES.thumbnail as im %}
-			<Attribute name="src" value="{{ im.url }}" />
-			<Attribute name="width" value="{{ im.x }}" />
-			<Attribute name="height" value="{{ im.y }}" />
-		{% endthumbnail %}
-	    {% endwith %}
-     </DataObject>
-  </PageMap>
-  -->
 <link rel="stylesheet" href="{{ MEDIA_URL }}css_ext/elastislide.css" type="text/css">
 <link rel="stylesheet" href="{{ MEDIA_URL }}css_ext/jquery.jqplot.css" type="text/css">
 <link rel="stylesheet" href="{{ MEDIA_URL }}css_ext/jquery.tipTip.css" type="text/css">
@@ -114,34 +101,28 @@ if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('
                 {% for species_image in species.get_ordered_images %}
                     {% if forloop.first %}
                         <div class="current-image">
-                        {% thumbnail species_image.image species_image.SIZES.medium as im %}
-                            <div id="old-image-factsheet" class="hidden"><a href="{{ species_image.image.url }}"><img src="{{ im.url }}" /></a></div>
+                            <div id="old-image-factsheet" class="hidden"><a href="{{ species_image.image.url }}">{{ species_image.thumbnail_img }}</a></div>
                             <div id="zoomify-factsheet" class="hidden"></div>
                             <p id="slideshow-copyright">
                                     {{ species_image.specimen_details|safe }}
                                     {{ species_image.license_details|safe }}
                             </p>
-                        {% endthumbnail %}
                         </div>
                         <div id="carousel-other-images" class="es-carousel-wrapper">
                         <div class="es-carousel">
                         <ul class="other-images">
                     {% endif %}
                     <li>
-                        {% thumbnail species_image.image species_image.SIZES.medium as medium %}
-                        {% thumbnail species_image.image species_image.SIZES.thumbnail as small %}
                             <a href="{{ species_image.image.url }}" title='{{ species_image.specimen_details }}{{ species_image.license_details }}&nbsp;' class="thumbnail">
-                                <img src="{{ small.url }}" />
+                                <img src="{{ species_image.thumbnail_url }}" />
                             </a>
                             {% with species_image.zoomify_folder|safe as inline_species_image %}
                                 {% ifequal inline_species_image "404" %}
-                                    <span class="hidden inline-species-image missing_zoomify">{{ medium.url }}</span>
+                                    <span class="hidden inline-species-image missing_zoomify">{{ species_image.medium_url }}</span>
                                 {% else %}
                                     <span class="hidden inline-species-image">/media/{{ inline_species_image }}</span>
                                 {% endifequal %}
                             {% endwith %}
-                        {% endthumbnail %}
-                        {% endthumbnail %}
                     </li>
                     {% if forloop.last %}
                         </ul></div></div>
@@ -164,9 +145,7 @@ if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('
                 <li>
                     <a href="{% page_url similar_species.factsheet %}" target="_blank">
                     {% with similar_species.get_first_image as similar_image %}
-                        {% thumbnail similar_image.image similar_image.SIZES.thumbnail as im %}
-                        <img src="{{ im.url }}" title="{{ similar_image.title }}" />
-                        {% endthumbnail %}
+			{{ similar_image.thumbnail_img }}
                     {% endwith %}
                     <em>{{ similar_species }}</em>
                     </a>

@@ -1,5 +1,5 @@
 {% extends "cms/base.html" %}
-{% load species_tags thumbnail %}
+{% load species_tags %}
 {% block breadcrumbs %}
 {% endblock %}
 {% block stylesheets %}
@@ -23,12 +23,9 @@
         {% for word in glossary %}
             <dt><a name="{{word.pk}}"></a>{{ word.word }}  &#151;</dt>
 	    {% if word.image %}
-		    {% thumbnail word.image.image word.image.SIZES.medium as im %}
-		    <a href="{{im.url}}" data-ob="lightbox" data-ob_share="false">
-		    {% endthumbnail %}
-		    {% thumbnail word.image.image word.image.SIZES.thumbnail as im %}
-			<img src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" /></a>
-		    {% endthumbnail %}
+		    <a href="{{word.image.medium_url}}" data-ob="lightbox" data-ob_share="false">
+			{{ word.image.thumbnail_img }}
+		    </a>
 	    {% endif %}
             <dd>&nbsp;{{ word.definition }}</dd>
         {% endfor %}
