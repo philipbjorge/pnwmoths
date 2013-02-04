@@ -187,6 +187,16 @@ div.plateImage p {
 	font-weight: bold;	
 }
 
+#pages ul, #pages li {
+  display: inline;
+}
+#pages li {
+  padding: 1em;
+}
+#pages li.selected {
+  font-weight: 700;
+}
+
 /* defines the black headings for our navigation menus */
 .footer-heading {
   background-color: #000000;

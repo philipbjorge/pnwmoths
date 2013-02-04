@@ -1,3 +1,7 @@
+$(window).load(function() {
+    window.loaded = true;
+});
+
 // Global storage for data sets indexed by data set name.
 var PNWMOTHS = PNWMOTHS || {};
 PNWMOTHS.Data = function () {
@@ -9,7 +13,11 @@ PNWMOTHS.Data = function () {
                 PNWMOTHS.Data.data[data_name] = new_data;
 
                 // Trigger "data is ready" event for this data set.
-                jQuery("#" + data_name).trigger("dataIsReady", [new_data]);
+		if (window.loaded === true) {
+			jQuery("#" + data_name).trigger("dataIsReady", [new_data]);
+		} else {
+			$(window).load(function() {jQuery("#" + data_name).trigger("dataIsReady", [new_data]);});
+		}
             };
         }
     };
