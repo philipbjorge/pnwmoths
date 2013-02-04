@@ -1,4 +1,4 @@
-{% load menu_tags thumbnail species_tags browse_filters %}
+{% load menu_tags species_tags browse_filters %}
 <div class="browse_items">
 {% for child in children %}
 
@@ -25,13 +25,9 @@
     {% imageset_by_navnode child as 4 subtree_images %}
     {% for species_image in subtree_images %}
         {% if child.is_leaf_node %}
-            {% thumbnail species_image.image species_image.SIZES.medium as im %}
-                <img src="{{ im.url }}" />
-            {% endthumbnail %}
+	    {{ species_image.medium_img }}
         {% else %}
-            {% thumbnail species_image.image species_image.SIZES.thumbnail as im %}
-            <img src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" />
-            {% endthumbnail %}
+	    {{ species_image.thumbnail_img }}
         {% endif %}        
     {% endfor %} 
   </span>
