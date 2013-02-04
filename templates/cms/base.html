@@ -208,6 +208,7 @@
 		<a href="http://www.collegeofidaho.edu/cultural-institutions/orma-j-smith-museum-natural-history"><img src="{{ MEDIA_URL }}/images/CI.png" /></a>
                 <a href="http://www.canacoll.org/"><img src="{{ MEDIA_URL }}images/canacoll.png" /></a>
                 <a href="http://www.oregon.gov/ODA/PLANT/IPPM/oda_museum_home.shtml"><img src="{{ MEDIA_URL }}images/orAg.png" /></a>
+                <a href="http://www.royalbcmuseum.bc.ca/"><img src="{{ MEDIA_URL }}images/RBCM.png" /></a>
                 <a href="http://agr.wa.gov/PlantsInsects/PestProgram/"><img src="{{ MEDIA_URL }}images/wsda.png" /></a>
                 <a href="http://www.lucidcentral.com/"><img src="{{ MEDIA_URL }}images/lucid.png" /></a>
           </div>
@@ -216,8 +217,11 @@
 </div>
 
     {% if user.is_superuser %}
-	<a href="http://pnwmoths.biol.wwu.edu/lastupdated.txt">Static Site Last Regenerated</a><br />
-	<a href="http://dev.pnwmoths.biol.wwu.edu/admin/">Admin</a>
+	<ul>
+	<li><a href="http://pnwmoths.biol.wwu.edu/lastupdated.txt">Static Site Last Regenerated</a>
+	<li><a href="http://dev.pnwmoths.biol.wwu.edu/admin/">Admin</a>
+	<li><a href="http://dev.pnwmoths.biol.wwu.edu/admin_sentry/">Admin Log Explorer</a>
+	</ul>
     {% endif %}
 
 {% block scripts %}
