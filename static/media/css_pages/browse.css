@@ -109,6 +109,7 @@ h3.browse_genus_species {
 
 .species img{    
     width: 94%;
+    height: auto;
     margin-bottom: 10px;
 }
 
