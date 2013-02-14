@@ -242,8 +242,8 @@ PNWMOTHS.Map = function () {
             // Render one marker data record to an array of HTML for the marker
             // info window tabs.
             var attributes = {"site_name": "Locality",
-                              "county": "County",
-                              "state": "State",
+                              "county": "County/Regional District",
+                              "state": "State/Province",
                               "elevation": "Elevation (ft.)",
                               "latitude": "Latitude",
                               "longitude": "Longitude"},
